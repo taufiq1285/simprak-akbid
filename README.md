@@ -1,70 +1,113 @@
-# Getting Started with Create React App
+# SIMPRAK AKBID (Sistem Informasi Manajemen Praktikum Akademi Kebidanan)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📋 Deskripsi
+Sistem manajemen praktikum terintegrasi untuk Akademi Kebidanan yang menangani penjadwalan, peminjaman alat, penilaian, dan dokumentasi praktikum.
 
-## Available Scripts
+## 🚀 Fitur Utama
+- Manajemen User (Admin, Dosen, Mahasiswa)
+- Penjadwalan Praktikum
+- Sistem Peminjaman Alat
+- Penilaian Praktikum
+- Manajemen Logbook
+- Pelaporan dan Dokumentasi
 
-In the project directory, you can run:
+## 🛠️ Teknologi yang Digunakan
+- React.js
+- Firebase (Authentication, Firestore, Storage)
+- Tailwind CSS
+- React Router DOM
+- Axios
+- React Query
+- Formik & Yup
 
-### `npm start`
+## 📦 Prasyarat
+Sebelum memulai, pastikan sistem Anda telah memiliki:
+- Node.js (versi 14 atau lebih tinggi)
+- npm (versi 6 atau lebih tinggi)
+- Git
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🔧 Instalasi
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone repository
+```bash
+git clone https://github.com/username/simprak-akbid.git
+cd simprak-akbid
+```
 
-### `npm test`
+2. Install dependencies
+```bash
+npm install
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Setup environment variables
+```bash
+cp .env.example .env
+```
+Sesuaikan nilai-nilai dalam file .env dengan konfigurasi Anda.
 
-### `npm run build`
+4. Jalankan aplikasi
+```bash
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🏗️ Struktur Proyek
+```
+simprak-akbid/
+├── public/                  # Asset statis
+├── src/
+│   ├── api/                # Integrasi API
+│   ├── components/         # Komponen React
+│   ├── contexts/           # React Contexts
+│   ├── features/           # Fitur-fitur utama
+│   ├── firebase/          # Konfigurasi Firebase
+│   ├── hooks/             # Custom hooks
+│   ├── layouts/           # Layout komponen
+│   ├── services/          # Service layer
+│   ├── styles/            # CSS dan styling
+│   └── utils/             # Utilitas dan helper
+└── tests/                 # Unit dan integration tests
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 👥 Pengembangan
+1. Buat branch baru untuk fitur/perbaikan
+```bash
+git checkout -b feature/nama-fitur
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. Commit perubahan
+```bash
+git add .
+git commit -m "Deskripsi perubahan"
+```
 
-### `npm run eject`
+3. Push ke repository
+```bash
+git push origin feature/nama-fitur
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📝 Testing
+```bash
+# Menjalankan unit test
+npm test
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Menjalankan test dengan coverage
+npm test -- --coverage
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🌐 Deployment
+1. Build aplikasi
+```bash
+npm run build
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Deploy ke hosting (contoh menggunakan Firebase Hosting)
+```bash
+firebase deploy
+```
 
-## Learn More
+## 📄 Lisensi
+[MIT License](LICENSE)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 👤 Kontak
+TAUFIQ - [anditaufiq1285@gmail.com]
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
