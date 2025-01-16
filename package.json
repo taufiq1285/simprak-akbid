@@ -7,22 +7,28 @@
     "@firebase/auth": "^1.8.1",
     "@firebase/firestore": "^4.7.5",
     "@firebase/storage": "^0.13.4",
+    "@fontsource/inter": "^5.1.1",
+    "@fontsource/poppins": "^5.1.1",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "autoprefixer": "^10.4.20",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.7",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
     "axios": "^1.7.9",
     "date-fns": "^4.1.0",
+    "firebase": "^11.1.0",
     "formik": "^2.4.6",
-    "postcss": "^8.5.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.5.1",
     "react-query": "^3.39.3",
     "react-router-dom": "^7.1.1",
-    "react-scripts": "5.0.1",
-    "tailwindcss": "^3.4.17",
+    "react-scripts": "^5.0.1",
+    "typescript": "^5.7.3",
     "web-vitals": "^2.1.4",
     "yup": "^1.6.1"
   },
@@ -51,8 +57,14 @@
     ]
   },
   "devDependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.16",
+    "autoprefixer": "^10.4.20",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.1",
-    "prettier": "^3.4.2"
+    "postcss": "^8.5.1",
+    "prettier": "^3.4.2",
+    "tailwindcss": "^3.4.17"
   }
 }

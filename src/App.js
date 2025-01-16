@@ -1,23 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import { auth } from './firebase/config/firebase';
 
 function App() {
+  console.log('Firebase Auth initialized:', auth ? 'Success' : 'Failed');
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>SIMPRAK AKBID</h1>
+      <p>Firebase setup completed</p>
     </div>
   );
 }
