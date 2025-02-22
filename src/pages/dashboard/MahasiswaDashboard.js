@@ -1,174 +1,206 @@
 // src/pages/dashboard/MahasiswaDashboard.js
 import React from 'react';
-import { useAuth } from '../../context/AuthContext';
 import DashboardLayout from '../../components/layout/DashboardLayout';
-import HealthStatsCard from '../../components/common/HealthStatsCard';
-import PraktikumSchedule from '../../components/praktikum/PraktikumSchedule';
-import PraktikumGrade from '../../components/praktikum/PraktikumGrade';
 import Card from '../../components/common/Card';
+import Button from '../../components/common/Button';
 
 const MahasiswaDashboard = () => {
-  const { user } = useAuth();
-
   // Data simulasi untuk development
-  const schedules = [
+  const stats = [
     {
-      day: 'Senin',
-      title: 'Praktikum Asuhan Kebidanan I',
-      time: '08:00 - 10:00',
-      location: 'Lab Kebidanan A',
-      status: 'Akan Datang',
-      participants: 25,
-      instructor: 'Dr. Sarah Johnson',
-      notes: 'Persiapkan alat pelindung diri lengkap'
+      title: "Total Praktikum",
+      value: "4",
+      icon: "📚",
+      description: "Semester ini"
     },
     {
-      day: 'Rabu',
-      title: 'Praktikum Kesehatan Ibu dan Anak',
-      time: '13:00 - 15:00',
-      location: 'Lab Kebidanan B',
-      status: 'Sedang Berlangsung',
-      participants: 20,
-      instructor: 'Dr. Emily Brown'
+      title: "Praktikum Aktif",
+      value: "2",
+      icon: "✍️",
+      description: "Sedang berjalan"
+    },
+    {
+      title: "Rata-rata Nilai",
+      value: "85.5",
+      icon: "📊",
+      description: "Semester ini"
+    },
+    {
+      title: "Kehadiran",
+      value: "95%",
+      icon: "📅",
+      description: "15 dari 16 pertemuan"
     }
   ];
 
-  const grades = [
+  const jadwalPraktikum = [
     {
-      title: 'Praktikum Asuhan Kebidanan I',
-      period: 'Semester Ganjil 2024/2025',
-      finalGrade: 85,
-      attendance: 90,
-      practical: 85,
-      assignments: 88,
-      exam: 82,
-      feedback: 'Kinerja sangat baik dalam praktik asuhan persalinan normal.'
+      nama: "Praktikum Asuhan Persalinan Normal",
+      waktu: "Senin, 08:00 - 10:00",
+      ruangan: "Lab Kebidanan A",
+      dosen: "Dr. Sarah Johnson",
+      status: "Minggu Ini",
+      pertemuan: "Pertemuan 5 dari 8"
     },
     {
-      title: 'Praktikum Kesehatan Ibu dan Anak',
-      period: 'Semester Ganjil 2024/2025',
-      finalGrade: 78,
-      attendance: 85,
-      practical: 75,
-      assignments: 80,
-      exam: 75
+      nama: "Praktikum Kesehatan Ibu dan Anak",
+      waktu: "Rabu, 13:00 - 15:00",
+      ruangan: "Lab Kebidanan B",
+      dosen: "Dr. Emily Brown",
+      status: "Minggu Depan",
+      pertemuan: "Pertemuan 3 dari 8"
     }
   ];
 
-  const announcements = [
+  const tugasPending = [
     {
-      title: 'Jadwal Ujian Praktikum',
-      content: 'Ujian praktikum Asuhan Kebidanan I akan dilaksanakan pada tanggal 25 Februari 2025.',
-      date: '2024-02-15',
-      priority: 'high'
+      praktikum: "Asuhan Persalinan Normal",
+      tugas: "Laporan Praktikum Minggu 4",
+      deadline: "Besok, 23:59",
+      status: "Urgent"
     },
     {
-      title: 'Pengumpulan Laporan',
-      content: 'Batas waktu pengumpulan laporan praktikum diperpanjang hingga 20 Februari 2025.',
-      date: '2024-02-10',
-      priority: 'medium'
+      praktikum: "Kesehatan Ibu dan Anak",
+      tugas: "Kasus Study Minggu 3",
+      deadline: "3 hari lagi",
+      status: "On Track"
+    }
+  ];
+
+  const pengumuman = [
+    {
+      judul: "Jadwal UAS Praktikum",
+      pesan: "UAS Praktikum akan dilaksanakan pada tanggal 20-24 Februari 2025",
+      tanggal: "15 Feb 2025",
+      penting: true
+    },
+    {
+      judul: "Pengumpulan Laporan",
+      pesan: "Batas akhir pengumpulan laporan praktikum diperpanjang hingga 28 Februari 2025",
+      tanggal: "14 Feb 2025",
+      penting: false
     }
   ];
 
   return (
     <DashboardLayout>
-      <div className="space-y-6">
-        {/* Welcome Banner */}
-        <div className="bg-gradient-to-r from-primary-600 to-secondary-600 rounded-xl p-6 text-white">
-          <h1 className="text-2xl font-bold">Selamat Datang, {user?.name}</h1>
-          <p className="mt-1 text-primary-100">Semester Ganjil 2024/2025</p>
-        </div>
-
-        {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <HealthStatsCard
-            title="Total Praktikum"
-            value="4"
-            icon={
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-              </svg>
-            }
-          />
-          <HealthStatsCard
-            title="Praktikum Aktif"
-            value="2"
-            icon={
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-              </svg>
-            }
-            trend="up"
-            trendValue="+1"
-          />
-          <HealthStatsCard
-            title="Rata-rata Nilai"
-            value="85.5"
-            icon={
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-              </svg>
-            }
-            trend="up"
-            trendValue="+2.3"
-          />
-          <HealthStatsCard
-            title="Kehadiran"
-            value="92%"
-            icon={
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-            }
-          />
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Jadwal Praktikum */}
-          <div className="lg:col-span-2">
-            <PraktikumSchedule schedules={schedules} />
+      {/* Header Section */}
+      <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg shadow-lg p-6 mb-6">
+        <div className="flex justify-between items-center">
+          <div>
+            <h1 className="text-2xl font-bold text-white">Dashboard Mahasiswa</h1>
+            <p className="text-purple-100 mt-1">Akademi Kebidanan Mega Buana</p>
           </div>
+          <Button
+            variant="secondary"
+            className="bg-white text-purple-600 hover:bg-purple-50"
+          >
+            Daftar Praktikum
+          </Button>
+        </div>
+      </div>
 
-          {/* Pengumuman */}
-          <div className="lg:col-span-1">
-            <Card className="p-6">
-              <h2 className="text-lg font-medium text-gray-900 mb-4">Pengumuman</h2>
-              <div className="space-y-4">
-                {announcements.map((announcement, index) => (
-                  <div
-                    key={index}
-                    className={`p-4 rounded-lg ${
-                      announcement.priority === 'high'
-                        ? 'bg-red-50 border border-red-100'
-                        : 'bg-blue-50 border border-blue-100'
-                    }`}
-                  >
-                    <h3 className={`text-sm font-medium ${
-                      announcement.priority === 'high' ? 'text-red-800' : 'text-blue-800'
-                    }`}>
-                      {announcement.title}
-                    </h3>
-                    <p className={`mt-1 text-sm ${
-                      announcement.priority === 'high' ? 'text-red-600' : 'text-blue-600'
-                    }`}>
-                      {announcement.content}
-                    </p>
-                    <p className="mt-2 text-xs text-gray-500">
-                      {new Date(announcement.date).toLocaleDateString('id-ID', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                      })}
-                    </p>
+      {/* Stats Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        {stats.map((stat, index) => (
+          <Card key={index} className="p-6 hover:shadow-lg transition-shadow duration-200">
+            <div className="flex items-center justify-between mb-4">
+              <span className="text-3xl">{stat.icon}</span>
+            </div>
+            <h3 className="text-gray-500 text-sm font-medium">{stat.title}</h3>
+            <p className="text-2xl font-bold text-gray-900 mt-1">{stat.value}</p>
+            <p className="text-gray-500 text-sm mt-1">{stat.description}</p>
+          </Card>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Jadwal Praktikum */}
+        <div className="lg:col-span-2 space-y-6">
+          <Card className="p-6">
+            <h2 className="text-lg font-semibold mb-4">Jadwal Praktikum</h2>
+            <div className="space-y-4">
+              {jadwalPraktikum.map((jadwal, index) => (
+                <div key={index} className="bg-gray-50 rounded-lg p-4">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="text-base font-medium text-gray-900">{jadwal.nama}</h3>
+                      <p className="text-sm text-gray-500 mt-1">{jadwal.waktu}</p>
+                      <p className="text-sm text-gray-500">{jadwal.ruangan}</p>
+                      <p className="text-sm text-gray-500">Dosen: {jadwal.dosen}</p>
+                    </div>
+                    <div className="text-right">
+                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        jadwal.status === 'Minggu Ini' 
+                          ? 'bg-green-100 text-green-800'
+                          : 'bg-blue-100 text-blue-800'
+                      }`}>
+                        {jadwal.status}
+                      </span>
+                      <p className="text-xs text-gray-500 mt-2">{jadwal.pertemuan}</p>
+                    </div>
                   </div>
-                ))}
-              </div>
-            </Card>
-          </div>
+                </div>
+              ))}
+            </div>
+          </Card>
+
+          {/* Tugas Pending */}
+          <Card className="p-6">
+            <h2 className="text-lg font-semibold mb-4">Tugas Pending</h2>
+            <div className="space-y-4">
+              {tugasPending.map((tugas, index) => (
+                <div key={index} className="bg-gray-50 rounded-lg p-4">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="text-sm font-medium text-gray-900">{tugas.praktikum}</h3>
+                      <p className="text-sm text-gray-500 mt-1">{tugas.tugas}</p>
+                      <p className="text-sm text-gray-500">Deadline: {tugas.deadline}</p>
+                    </div>
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                      tugas.status === 'Urgent' 
+                        ? 'bg-red-100 text-red-800'
+                        : 'bg-green-100 text-green-800'
+                    }`}>
+                      {tugas.status}
+                    </span>
+                  </div>
+                  <Button 
+                    variant="primary" 
+                    className="w-full mt-3"
+                    size="sm"
+                  >
+                    Kumpulkan Tugas
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </Card>
         </div>
 
-        {/* Nilai Praktikum */}
-        <PraktikumGrade grades={grades} />
+        {/* Pengumuman */}
+        <Card className="p-6">
+          <h2 className="text-lg font-semibold mb-4">Pengumuman</h2>
+          <div className="space-y-4">
+            {pengumuman.map((item, index) => (
+              <div key={index} className={`p-4 rounded-lg ${
+                item.penting ? 'bg-red-50' : 'bg-blue-50'
+              }`}>
+                <h3 className={`text-sm font-medium ${
+                  item.penting ? 'text-red-800' : 'text-blue-800'
+                }`}>
+                  {item.judul}
+                </h3>
+                <p className={`text-sm mt-1 ${
+                  item.penting ? 'text-red-600' : 'text-blue-600'
+                }`}>
+                  {item.pesan}
+                </p>
+                <p className="text-xs text-gray-500 mt-2">{item.tanggal}</p>
+              </div>
+            ))}
+          </div>
+        </Card>
       </div>
     </DashboardLayout>
   );
