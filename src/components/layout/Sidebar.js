@@ -9,7 +9,8 @@ import {
   Users,
   FileText,
   Calendar,
-  LogOut
+  LogOut,
+  FlaskConical
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -27,6 +28,7 @@ const Sidebar = ({ isCollapsed, toggleCollapse }) => {
       admin: [
         { icon: Users, label: 'Manajemen User', path: '/users' },
         { icon: Book, label: 'Manajemen Praktikum', path: '/praktikum-manage' },
+        { icon: FlaskConical, label: 'Laboratorium', path: '/laboratorium' }
       ],
       dosen: [
         { icon: Book, label: 'Praktikum', path: '/praktikum' },

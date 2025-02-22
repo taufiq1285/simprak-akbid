@@ -21,17 +21,21 @@ import PraktikumDetail from './pages/praktikum/PraktikumDetail';
 import NilaiManagement from './pages/nilai/NilaiManagement';
 import DetailNilaiMahasiswa from './pages/nilai/DetailNilaiMahasiswa';
 
+// Laboratorium Pages
+import LaboratoriumManagement from './pages/laboratorium/LaboratoriumManagement';
+import LaboratoriumDetail from './pages/laboratorium/LaboratoriumDetail';
+import LaboratoriumPemeliharaan from './pages/laboratorium/LaboratoriumPemeliharaan';
+import LaboratoriumJadwal from './pages/laboratorium/LaboratoriumJadwal';
+
 // Other Pages
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
 import NotFound from './pages/NotFound';
-import Unauthorized from './pages/Unauthorized'; // FIX: Pastikan file ini ada
+import Unauthorized from './pages/Unauthorized';
 
 // Context
 import { AuthProvider } from './context/AuthContext';
 import { NotificationProvider } from './context/NotificationContext';
-
-// 🛠️ Protected Route - SEMENTARA DINONAKTIFKAN (Semua halaman bisa diakses)
 
 function App() {
   return (
@@ -62,17 +66,19 @@ function App() {
             <Route path="/nilai" element={<NilaiManagement />} />
             <Route path="/nilai/:id" element={<DetailNilaiMahasiswa />} />
 
+            {/* Laboratorium Routes */}
+            <Route path="/laboratorium" element={<LaboratoriumManagement />} />
+            <Route path="/laboratorium/:id" element={<LaboratoriumDetail />} />
+            <Route path="/laboratorium/:id/pemeliharaan" element={<LaboratoriumPemeliharaan />} />
+            <Route path="/laboratorium/:id/jadwal" element={<LaboratoriumJadwal />} />
+
             {/* Profile & Settings Routes */}
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
 
-            {/* Unauthorized Page */}
+            {/* Special Routes */}
             <Route path="/unauthorized" element={<Unauthorized />} />
-
-            {/* Redirect root to login */}
             <Route path="/" element={<Navigate to="/login" replace />} />
-
-            {/* 404 Not Found */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </NotificationProvider>

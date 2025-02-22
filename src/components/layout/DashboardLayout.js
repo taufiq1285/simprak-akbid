@@ -1,11 +1,13 @@
 // src/components/layout/DashboardLayout.js
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 const DashboardLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const { user } = useAuth();
 
   const navigationItems = [
     { 
@@ -22,13 +24,17 @@ const DashboardLayout = ({ children }) => {
       name: 'Kelola Praktikum', 
       path: '/admin/praktikum', 
       icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2' 
-    },
-    { 
-      name: 'Laboratorium', 
-      path: '/admin/lab', 
-      icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' 
     }
   ];
+
+  // Tambahkan Laboratorium hanya jika user adalah admin atau dosen
+  if (user?.role === 'admin' || user?.role === 'dosen') {
+    navigationItems.push({
+      name: 'Laboratorium',
+      path: '/laboratorium',
+      icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4'
+    });
+  }
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -51,7 +57,7 @@ const DashboardLayout = ({ children }) => {
                 key={item.name}
                 onClick={() => navigate(item.path)}
                 className={`flex items-center w-full px-3 py-2 text-sm font-medium rounded-md transition-colors duration-150 ease-in-out ${
-                  location.pathname === item.path
+                  location.pathname.startsWith(item.path)
                     ? 'bg-primary-100 text-primary-700'
                     : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                 }`}
@@ -73,60 +79,24 @@ const DashboardLayout = ({ children }) => {
               </button>
             ))}
           </nav>
-
-          {/* Logout Button */}
-          <div className="border-t border-gray-200">
-            <button
-              onClick={() => navigate('/login')}
-              className="flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-white bg-red-600 hover:bg-red-700 transition-colors duration-150 ease-in-out"
-            >
-              <svg
-                className="w-5 h-5 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                />
-              </svg>
-              Keluar
-            </button>
-          </div>
         </div>
       </div>
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
-        {/* Top Navigation */}
         <header className="bg-white shadow">
           <div className="flex items-center justify-between h-16 px-4">
-            <button
-              type="button"
-              className="lg:hidden text-gray-500 hover:text-gray-600 focus:outline-none"
-              onClick={() => setSidebarOpen(true)}
-            >
+            <button className="lg:hidden text-gray-500" onClick={() => setSidebarOpen(!sidebarOpen)}>
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
-            <h1 className="text-xl font-semibold text-gray-900">
-              Akademi Kebidanan Mega Buana
-            </h1>
+            <h1 className="text-xl font-semibold text-gray-900">Akademi Kebidanan Mega Buana</h1>
           </div>
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-y-auto bg-gray-100">
-          <div className="py-6">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-              {children}
-            </div>
-          </div>
-        </main>
+        <main className="flex-1 p-4 overflow-y-auto">{children}</main>
       </div>
     </div>
   );
